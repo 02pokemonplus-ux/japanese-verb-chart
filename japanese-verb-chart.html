@@ -6,31 +6,48 @@
 <title>五段動詞活用形完整指南</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f3; color: #1a1a1a; padding: 24px 16px; min-height: 100vh; }
+  :root {
+    --bg: #f5f5f3; --surface: #fff; --border: #e0e0e0;
+    --text: #1a1a1a; --text2: #666; --text3: #555;
+    --rule-bg: #f5f5f3; --neu-bg: #f0f0ee; --neu-border: #ddd; --neu-text: #555;
+    --jo-bg: #FCEBEB; --jo-text: #A32D2D;
+    --tei-bg: #E6F1FB; --tei-text: #185FA5;
+    --tab-active-bg: #1a1a1a; --tab-border: #ccc; --tab-text: #666;
+  }
+  body.dark {
+    --bg: #111110; --surface: #1c1c1a; --border: #2e2e2b;
+    --text: #f0ede8; --text2: #a8a69e; --text3: #808070;
+    --rule-bg: #252520; --neu-bg: #252520; --neu-border: #3a3a35; --neu-text: #a8a69e;
+    --jo-bg: #3a1a1a; --jo-text: #f4a0a0;
+    --tei-bg: #0a1a30; --tei-text: #90c0f0;
+    --tab-active-bg: #f0ede8; --tab-border: #3a3a35; --tab-text: #888;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); padding: 24px 16px; min-height: 100vh; transition: background .2s, color .2s; }
+  .theme-btn { position: fixed; top: 52px; right: 16px; z-index: 999; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text2); cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 6px rgba(0,0,0,.15); transition: background .2s; }
   .container { max-width: 720px; margin: 0 auto; }
-  h1 { font-size: 20px; font-weight: 500; margin-bottom: 6px; color: #1a1a1a; }
+  h1 { font-size: 20px; font-weight: 500; margin-bottom: 6px; color: var(--text); }
   .subtitle { font-size: 13px; color: #888; margin-bottom: 20px; }
   .tabs-bar { display: flex; gap: 5px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 4px; flex-wrap: wrap; }
-  .tab-btn { flex-shrink: 0; padding: 5px 13px; border-radius: 8px; border: 0.5px solid #ccc; background: #fff; color: #666; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background .12s, color .12s; }
-  .tab-btn.active { background: #1a1a1a; color: #fff; border-color: transparent; }
+  .tab-btn { flex-shrink: 0; padding: 5px 13px; border-radius: 8px; border: 0.5px solid #ccc; background: var(--surface); color: var(--text2); font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background .12s, color .12s; }
+  .tab-btn.active { background: var(--tab-active-bg); color: var(--bg); border-color: transparent; }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
-  .card { background: #fff; border: 0.5px solid #e0e0e0; border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; }
-  .card-title { font-size: 15px; font-weight: 500; color: #1a1a1a; margin: 0 0 4px; }
-  .card-sub { font-size: 13px; color: #666; margin: 0 0 12px; line-height: 1.6; }
-  .form-rule { font-size: 12px; background: #f5f5f3; border-radius: 6px; padding: 7px 10px; margin-bottom: 12px; color: #555; line-height: 1.9; }
-  .form-rule b { color: #1a1a1a; }
+  .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; }
+  .card-title { font-size: 15px; font-weight: 500; color: var(--text); margin: 0 0 4px; }
+  .card-sub { font-size: 13px; color: var(--text2); margin: 0 0 12px; line-height: 1.6; }
+  .form-rule { font-size: 12px; background: var(--rule-bg); border-radius: 6px; padding: 7px 10px; margin-bottom: 12px; color: var(--text3); line-height: 1.9; }
+  .form-rule b { color: var(--text); }
   .ex-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 10px; }
   .ex-row:last-child { margin-bottom: 0; }
   .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; white-space: nowrap; flex-shrink: 0; margin-top: 3px; }
-  .b-jo  { background: #FCEBEB; color: #A32D2D; }
-  .b-tei { background: #E6F1FB; color: #185FA5; }
-  .b-neu { background: #f0f0ee; color: #555; border: 0.5px solid #ddd; }
+  .b-jo  { background: var(--jo-bg); color: var(--jo-text); }
+  .b-tei { background: var(--tei-bg); color: var(--tei-text); }
+  .b-neu { background: var(--neu-bg); color: var(--text3); border: 0.5px solid var(--neu-border); }
   .ex-body { flex: 1; }
-  .jp { font-size: 15px; color: #1a1a1a; line-height: 1.6; }
-  .tr { font-size: 12px; color: #777; margin-top: 2px; }
-  .note { font-size: 11px; color: #aaa; margin-top: 2px; }
-  .div { height: 0.5px; background: #eee; margin: 10px 0; }
+  .jp { font-size: 15px; color: var(--text); line-height: 1.6; }
+  .tr { font-size: 12px; color: var(--text2); margin-top: 2px; }
+  .note { font-size: 11px; color: var(--text3); margin-top: 2px; }
+  .div { height: 0.5px; background: var(--border); margin: 10px 0; }
   .ft { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; margin-right: 6px; }
   .ft-red { background:#FCEBEB; color:#A32D2D; }
   .ft-amb { background:#FAEEDA; color:#854F0B; }
@@ -44,6 +61,7 @@
 </style>
 </head>
 <body>
+<button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="切換深色模式">🌙</button>
 <div class="container">
   <h1>五段動詞活用形完整指南</h1>
   <p class="subtitle">含使用場合、敬語／常體例句對照</p>
@@ -90,6 +108,10 @@
       <div class="ex-row"><span class="badge b-jo">て形接續（常體）</span><div class="ex-body"><p class="jp">薬を飲んで、寝た。</p><p class="tr">吃了藥，然後睡覺。</p></div></div>
       <div class="div"></div>
       <div class="ex-row"><span class="badge b-jo">過去（常體）</span><div class="ex-body"><p class="jp">昨日ビールを飲んだ。</p><p class="tr">昨天喝了啤酒。</p></div></div>
+      <div class="div"></div>
+      <div class="ex-row"><span class="badge b-tei">て＋ください（敬語請求）</span><div class="ex-body"><p class="jp">ここに名前を書いてください。</p><p class="tr">請在這裡寫上名字。</p><p class="note">※ て形＋ください = 禮貌請求對方做某事</p></div></div>
+      <div class="div"></div>
+      <div class="ex-row"><span class="badge b-jo">て＋くれ（常體請求）</span><div class="ex-body"><p class="jp">ちょっと待ってくれ。</p><p class="tr">等一下。（口語、對親近的人）</p></div></div>
       <div class="div"></div>
       <div class="ex-row"><span class="badge b-neu">名詞化</span><div class="ex-body"><p class="jp">飲み物・読み方・休み</p><p class="tr">飲料・讀法・休假</p></div></div>
     </div>
@@ -226,6 +248,18 @@
 </div>
 
 <script>
+function toggleTheme() {
+  const dark = document.body.classList.toggle('dark');
+  document.getElementById('theme-btn').textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('verb-chart-dark', dark ? '1' : '0');
+}
+if (localStorage.getItem('verb-chart-dark') === '1') {
+  document.body.classList.add('dark');
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('theme-btn');
+    if (btn) btn.textContent = '☀️';
+  });
+}
 function sw(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
